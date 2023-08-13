@@ -72,11 +72,6 @@
 
 // console.log(obj);
 
-console.log(question[1]);
-
-let questions = document.querySelector(".questions");
-
-let next = document.querySelector(".next");
 
 
 
@@ -112,32 +107,62 @@ let next = document.querySelector(".next");
 
 
 let count = 0;
+let questionsCount = 2;
 
-next.addEventListener("click", function(){
-        questions.innerHTML += `  
-            <div class="question">
-                <div class="flex flex-col px-6 py-4">
-                    <h3 class="text-2xl font-bold">${question[count].question}</h3>
-                </div>
-                <div class="flex flex-col px-12 gap-2">
-                    <div class="flex items-center gap-4 hover:bg-indigo-500 px-2 py-2">
-                        <input type="radio" name="" id="" class="w-6 h-6 border border-indigo-500">
-                        <p class="text-xl">${question[count].options[0]}</p>
-                    </div>
-                    <div class="flex items-center gap-4 hover:bg-indigo-500 px-2 py-2">
-                        <input type="radio" name="" id="" class="w-6 h-6 border border-indigo-500">
-                        <p class="text-xl">${question[count].options[1]}</p>
-                    </div>
-                    <div class="flex items-center gap-4 hover:bg-indigo-500 px-2 py-2">
-                        <input type="radio" name="" id="" class="w-6 h-6 border border-indigo-500">
-                        <p class="text-xl">${question[count].options[2]}</p>
-                    </div>
-                    <div class="flex items-center gap-4 hover:bg-indigo-500 px-2 py-2">
-                        <input type="radio" name="" id="" class="w-6 h-6 border border-indigo-500">
-                        <p class="text-xl">${question[count].options[3]}</p>
-                    </div>
-                </div>
-            </div>
-        `;
-        count++;
-})
+
+let currentPage = 1;
+const totalPages = question.length+1;
+
+function showPage(pageNumber) {
+  document.querySelectorAll('.question').forEach((page) => {
+    page.classList.remove('active');
+  });
+
+  document.getElementById(`question${pageNumber}`).classList.add('active');
+  currentPage = pageNumber;
+}
+
+function nextPage() {
+  if (currentPage < totalPages) {
+    showPage(currentPage + 1);
+  }
+  alert("Hello");
+  let questions = document.querySelector(".questions");
+  questions.innerHTML += `  
+  <div class="question" id="question${questionsCount}">
+      <div class="flex flex-col px-6 py-4">
+          <h3 class="text-2xl font-bold">${question[count].question}</h3>
+      </div>
+      <div class="flex flex-col px-12 gap-2">
+          <div class="flex items-center gap-4 hover:bg-indigo-500 px-2 py-2">
+              <input type="radio" name="" id="" class="w-6 h-6 border border-indigo-500">
+              <p class="text-xl">${question[count].options[0]}</p>
+          </div>
+          <div class="flex items-center gap-4 hover:bg-indigo-500 px-2 py-2">
+              <input type="radio" name="" id="" class="w-6 h-6 border border-indigo-500">
+              <p class="text-xl">${question[count].options[1]}</p>
+          </div>
+          <div class="flex items-center gap-4 hover:bg-indigo-500 px-2 py-2">
+              <input type="radio" name="" id="" class="w-6 h-6 border border-indigo-500">
+              <p class="text-xl">${question[count].options[2]}</p>
+          </div>
+          <div class="flex items-center gap-4 hover:bg-indigo-500 px-2 py-2">
+              <input type="radio" name="" id="" class="w-6 h-6 border border-indigo-500">
+              <p class="text-xl">${question[count].options[3]}</p>
+          </div>
+      </div>
+  </div>
+`;
+count++;
+questionsCount++;
+
+}
+
+function previousPage() {
+  if (currentPage > 1) {
+    showPage(currentPage - 1);
+  }
+  alert("Hello");
+}
+
+showPage(currentPage);
