@@ -4,14 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
 <body>
-    <!-- <div class="quiz-container">
+
+    
+    <!-- <div class="quiz-container container mx-aut0 max-w-6xl">
         <div class="question"></div>
         <div class="options"></div>
         <button class="prev-btn">Previous</button>
         <button class="next-btn">Next</button>
-    </div> -->
+    </div>  -->
 
 
     <div class="container mx-auto max-w-screen-lg py-4 pt-32">
@@ -20,51 +25,40 @@
                 <h1 class="text-2xl font-bold">Chadura Quiz App</h1>
             </div>
             <div class="flex items-center justify-center">
-                <h3 class="text-lg font-bold">Seconds: <span id="decreSecond"></span></h3>
+                <h3 class="text-lg font-bold">Seconds: <span id="decreSecond">55:00</span></h3>
             </div>
         </div>
         <div class="flex flex-col border border-4 border-indigo py-10 gap-2">
 
 
 
-            <div class="questions">
-                <div class="question" id="question1">
-                    <div class="flex flex-col px-6 py-4">
-                        <h3 class="text-2xl font-bold">What is Python?</h3>
-                    </div>
-                    <div class="flex flex-col px-12 gap-2">
-                        <div class="flex items-center gap-4 hover:bg-indigo-500 px-2 py-2">
-                            <input type="radio" name="" id="" class="w-6 h-6 border border-indigo-500">
-                            <p class="text-xl">Programming Language</p>
-                        </div>
-                        <div class="flex items-center gap-4 hover:bg-indigo-500 px-2 py-2">
-                            <input type="radio" name="" id="" class="w-6 h-6 border border-indigo-500">
-                            <p class="text-xl">Programming Language</p>
-                        </div>
-                        <div class="flex items-center gap-4 hover:bg-indigo-500 px-2 py-2">
-                            <input type="radio" name="" id="" class="w-6 h-6 border border-indigo-500">
-                            <p class="text-xl">Programming Language</p>
-                        </div>
-                        <div class="flex items-center gap-4 hover:bg-indigo-500 px-2 py-2">
-                            <input type="radio" name="" id="" class="w-6 h-6 border border-indigo-500">
-                            <p class="text-xl">Programming Language</p>
-                        </div>
-                    </div>
+       
+
+
+            <!-- <div class="quiz-container px-12 flex flex-col gap-4">
+                <div class="question text-2xl font-bold flex flex-col gap-6"></div>
+                <div class="options text-lg flex flex-col gap-6 px-6">
+
                 </div>
-            </div>
+
+                <div class="flex flex-row justify-between gap-12">
+                    <button class="prev-btn bg-indigo-500 text-white font-bold px-4 py-2">Previous</button>
+                    <button class="next-btn bg-indigo-500 text-white font-bold px-4 py-2">Next</button>
+                </div>
+            </div> -->
         
         
-
-
 
 
             <div class="flex justify-between px-12 pt-6">
                 <button class="bg-indigo-500 text-white font-bold px-4 py-2" onclick="previousPage()">Previous</button>
                 <button class="bg-indigo-500 text-white font-bold px-4 py-2" onclick="nextPage()">Next</button>
-            </div>
+            </div> 
+
             <div class="px-12 pt-6">
                 <p class="text-lg font-bold"> <span class="count">1</span> of  100 Questions</p>
             </div>
+
         </div>
      
     </div>
@@ -130,6 +124,6 @@
         
             showQuestion(currentQuestionIndex);
         
-        </script>
+    </script>
 </body>
 </html>
