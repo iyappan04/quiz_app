@@ -1,15 +1,33 @@
 let question = [
     {
         "question": "What is Python?",
-        "options": ["Programming language", "Not a Programming language", "Database", "Technology"]
+        "options": ["A.Programming language", "B.Not a Programming language", "C.Database", "D.Technology"],
+        "correct": "a"
     },
     {
         "question": "What is Django?",
-        "options": ["Frontend Framework", "Backend Framework", "Database", "Programming language"]
+        "options": ["A.Frontend Framework", "B.Backend Framework", "C.Database", "D.Programming language"],
+        "correct": "b"
     },
     {
         "question": "What is Not Valid Datatype in Python?",
-        "options": ["List", "Tuple", "Set", "Array"]
+        "options": ["A.List", "B.Tuple", "C.Set", "D.Array"],
+        "correct": "d",
+    },
+    {
+        "question": "What is Python?",
+        "options": ["A.Programming language", "B.Not a Programming language", "C.Database", "D.Technology"],
+        "correct": "a"
+    },
+    {
+        "question": "What is Django?",
+        "options": ["A.Frontend Framework", "B.Backend Framework", "C.Database", "D.Programming language"],
+        "correct": "b"
+    },
+    {
+        "question": "What is Not Valid Datatype in Python?",
+        "options": ["A.List", "B.Tuple", "C.Set", "D.Array"],
+        "correct": "d",
     },
 ]
 
@@ -34,7 +52,15 @@ const optionvalue1 = document.querySelector(".optionvalue1");
 const optionvalue2 = document.querySelector(".optionvalue2");
 const optionvalue3 = document.querySelector(".optionvalue3");
 const optionvalue4 = document.querySelector(".optionvalue4");
+const questionCount = document.getElementById("questionCount");
 
+const optionvalue = document.querySelectorAll(".optionvalue");
+
+let questionNumber = count+1;
+
+let scorecount =0;
+
+const questiondiv = document.querySelector(".all");
 
 function showQuestion(count){
     let currentQuestion = question[count];
@@ -43,27 +69,67 @@ function showQuestion(count){
     option2.textContent = currentQuestion.options[1];
     option3.textContent = currentQuestion.options[2];
     option4.textContent = currentQuestion.options[3];
-
-    optionvalue1.value = currentQuestion.options[0];
-    optionvalue2.value = currentQuestion.options[1];
-    optionvalue3.value = currentQuestion.options[2];
-    optionvalue4.value = currentQuestion.options[3];
+    questionCount.textContent = questionNumber;
 
     
 }
 
 
+
+function deSelectInput(){
+    optionvalue.forEach(optionvalue => optionvalue.checked = false)
+}
+
+
+function selectedOption(){
+    let answer
+    optionvalue.forEach(optionvalues => {
+        if(optionvalues.checked) {
+            answer = optionvalues.id
+        }
+    })
+    return answer
+}
+
 function nextPage(){
 
-    const questionValue = document.getElementById("optionvalue").value;
-    console.log(questionValue);
+
+
+    var answer = selectedOption();
+
+    console.log(answer);
+
+    if(answer === question[count].correct) {
+        scorecount++;
+        console.log(scorecount);
+    }
+
 
     count++;
+    deSelectInput();
+    
+   
+
+
     if(count>question.length-1){
-    //   count=0;
-        alert("Quiz test completed.")
+        //   count=0;
+            // alert("Quiz test completed.");
+            // alert(scorecount);
+            questiondiv.innerHTML = `
+            <div>
+            <h1 class="text-4xl font-bold">You score is ${scorecount}/${question.length}</h1>
+            </div>
+            `;
+            
     }
-    showQuestion(count);
+    
+
+  
+
+    if(count<question.length){
+        showQuestion(count);
+    }
+
 
 }
 
@@ -84,24 +150,4 @@ function previousPage(){
 
 
 
-var countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
 
-var x = setInterval(function() {
-
-  var now = new Date().getTime();
-
-  var distance = countDownDate - now;
-
-
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-
-  document.getElementById("demo").innerHTML =  minutes + "m " + seconds + "s ";
-
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("demo").innerHTML = "EXPIRED";
-  }
-
-}, 1000);
